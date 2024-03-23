@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
   
-    <title>Students</title>
+    <title>Courses</title>
 </head>
 <body>
   
         <h1>
-            The students:
+            The courses:
         </h1>
         <ul>
-           {% for student in students %}
-                <li>First name: {{ student.firstName }},  last name: {{ student.lastName }}</li>
+           {% for course in courses %}
+                <li>Course name: {{ co }} last name: {{ student.lastName }}</li>
            {% endfor %}
         </ul>
         <h2>
-            Add new student
+            Add new course
         </h2>
         <form method="POST">
             {% csrf_token %}
-            {{ form }}
+            {{ form.as_p  }}
 
             <input type="submit">
         </form>
