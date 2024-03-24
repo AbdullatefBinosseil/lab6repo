@@ -11,7 +11,7 @@
         </h1>
         <ul>
            {% for course in courses %}
-                <li>Course name: {{ co }} last name: {{ student.lastName }}</li>
+                <li>Course ID:{{ course.id }}  Course name: {{ course.courseName }} Course hours: {{ course.hour }}</li>
            {% endfor %}
         </ul>
         <h2>

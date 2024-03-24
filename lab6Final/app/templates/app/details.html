@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Details</title>
+</head>
+<body>
+   
+    <section>
+        {{ student.firstName }} 
+          <form method="POST">
+              {% csrf_token %}
+              <select>
+                  {% for c in notRegisteredCourses %}
+                      <option value="{{c.course_id}}"> {{ c }}</option>
+                  {% endfor %}
+              </select>
+              
+              <input type="submit" value="Add Course">
+          </form>
+          <ul>
+             {% for c in student.courses.all %}
+                 <li> {{ c }}</li>
+             {% endfor %}
+          </ul>
+      </section>
+      
+  
+</body>
+</html>

@@ -6,15 +6,15 @@ from django.db import models
 
 class course(models.Model):
     courseName= models.CharField(max_length=7)
-    hour=models.IntegerField(default=3)
+    hour=models.IntegerField()
     def __str__(self):
-        return f"{self.courseName} {self.hour}"
+        return f"ID:{self.id} {self.courseName} hours:{self.hour}"
 
 class student(models.Model):
     firstName= models.CharField(max_length=64)
     lastName= models.CharField(max_length=64)
-    age= models.IntegerField(null=True)
-    phoneNum= models.IntegerField(null=True)
+    age= models.IntegerField()
+    phoneNum= models.IntegerField()
     courses= models.ManyToManyField(course, related_name= "students")
     def __str__(self):
         return f"{self.firstName} {self.lastName} {self.age} {self.phoneNum} {self.courses}"

@@ -11,7 +11,8 @@
         </h1>
         <ul>
            {% for student in students %}
-                <li>First name: {{ student.firstName }},  last name: {{ student.lastName }}</li>
+                <li><a href="{% url 'details' student.id %}">student {{ student.id }}</a>ID:{{student.id}} ---name: {{ student.firstName }}---last name: {{ student.lastName }}---
+                     Age: {{ student.age }}---Phone number: {{ student.phoneNum }}</li>
            {% endfor %}
         </ul>
         <h2>

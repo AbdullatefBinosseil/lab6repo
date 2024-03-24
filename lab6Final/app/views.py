@@ -32,6 +32,7 @@ def students(request):
 "form":studentForm(),"students":students_list
 })
 def courses(request):
+     course_list = course.objects.all()
      if request.method == "POST":      
         form=courseForm(request.POST)
         
@@ -45,7 +46,17 @@ def courses(request):
 
      else:
         return render(request, "app/course.html", {
-"form":courseForm()
+"form":courseForm(), "courses":course_list
 })
+def details(request,student_id):
+   
+    student_instance = student.objects.get(id=student_id)
+    not_registered_courses = course.objects.exclude(students=student_instance)
+    if request.method == 'POST':
+        course_id = (request.POST.get('course'))
+        selected_course = course.objects.get(id=course_id)
+        student_instance.courses.add(selected_course)
+        return HttpResponseRedirect(reverse('details', args=[student_id]))
+    return render(request, 'app/details.html', {'student': student_instance, 'notRegisteredCourses': not_registered_courses})
 
 
