@@ -11,8 +11,8 @@
         </h1>
         <ul>
            {% for student in students %}
-                <li><a href="{% url 'details' student.id %}">student {{ student.id }}</a>ID:{{student.id}} ---name: {{ student.firstName }}---last name: {{ student.lastName }}---
-                     Age: {{ student.age }}---Phone number: {{ student.phoneNum }}</li>
+                <li><a href="{% url 'details' student.id %}">student {{ student.id }}</a>---First name: {{ student.firstName }}---last name: {{ student.lastName }}---
+                     Age: {{ student.age }}---Phone number: {{ student.phoneNum }}{{ student.courses.courseName }}</li>
            {% endfor %}
         </ul>
         <h2>
@@ -21,9 +21,12 @@
         <form method="POST">
             {% csrf_token %}
             {{ form }}
+           
 
-            <input type="submit">
+            <input type="submit" value="Add course">
         </form>
+        <a href="{% url 'students' %}">Student page</a>,,
+        <a href="{% url 'courses' %}">Course page</a>
   
 </body>
 </html>

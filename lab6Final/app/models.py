@@ -8,7 +8,7 @@ class course(models.Model):
     courseName= models.CharField(max_length=7)
     hour=models.IntegerField()
     def __str__(self):
-        return f"ID:{self.id} {self.courseName} hours:{self.hour}"
+        return f"{self.courseName}"
 
 class student(models.Model):
     firstName= models.CharField(max_length=64)
@@ -17,7 +17,7 @@ class student(models.Model):
     phoneNum= models.IntegerField()
     courses= models.ManyToManyField(course, related_name= "students")
     def __str__(self):
-        return f"{self.firstName} {self.lastName} {self.age} {self.phoneNum} {self.courses}"
+        return f"{self.firstName} {self.lastName} {self.age} {self.phoneNum}"
 
 
 

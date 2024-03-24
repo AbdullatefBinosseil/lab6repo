@@ -10,9 +10,9 @@
         {{ student.firstName }} 
           <form method="POST">
               {% csrf_token %}
-              <select>
+              <select name="course">
                   {% for c in notRegisteredCourses %}
-                      <option value="{{c.course_id}}"> {{ c }}</option>
+                      <option value="{{c.id}}"> {{ c }}</option>
                   {% endfor %}
               </select>
               
@@ -20,10 +20,12 @@
           </form>
           <ul>
              {% for c in student.courses.all %}
-                 <li> {{ c }}</li>
+                 <li> {{ c.courseName }}</li>
              {% endfor %}
           </ul>
       </section>
+      <a href="{% url 'students' %}">Student page</a>,,
+      <a href="{% url 'courses' %}">Course page</a>
       
   
 </body>
